@@ -19,6 +19,43 @@ initial_sharks = 1000
 steps = 500 #Time duration of the simulation
 basicSetup = True #A random initial distribution (or not)
 
+// seans added code...
+initialherdimmunity = 0
+initialdisease = 0
+alpha = 1.1
+beta = 0.67
+delta = 0.25
+gamma =  0.35
+lambda = 1.5
+sigma = 0.15
+omega = 1.15
+
+def sim(varibales, t, parameters):
+
+    // defining variables 
+
+    # fish pop.
+    x = variables[0]
+    # shark pop.
+    y = variables[1]
+    # infected fishes dying
+    z = variables [2]
+    # infected sharks dying
+    A = variables[3]
+    # infected fishes dying BUT with herd immunity developed.
+    C = variables[4]
+
+alpha = params[0]
+beta = params[1]
+delta = params[2]
+gamma = params[3]
+lambda = params[4]
+sigma = params[5]
+omega = params[6]
+
+dxdt = lambda * x - beta * x * y - sigma * C
+dydt = lambda * y + delta * x * y - gamma * y - omega * C
+
 #Create a list of the row indexes of the game array
 ilist = []
 for i in range(dims[0]):
